@@ -1,22 +1,22 @@
-FROM ubuntu:15.10
+FROM ubuntu:16.04
 
-MAINTAINER Dmitrii Voitovich <dmitrii.voitovich@cashongo.co.uk>
+MAINTAINER Gabor Csillag <gaborcsillag@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
-ENV SCREEN_WIDTH 1600
-ENV SCREEN_HEIGHT 900
+ENV SCREEN_WIDTH 1920
+ENV SCREEN_HEIGHT 1080
 ENV SCREEN_DEPTH 24
 ENV DISPLAY :99.0
 
 
-ENV TZ "Europe/London"
-RUN echo "Europe/London" | tee /etc/timezone \
+ENV TZ "Europe/Budapest"
+RUN echo "Europe/Budapest" | tee /etc/timezone \
     && dpkg-reconfigure --frontend noninteractive tzdata
 
 
 RUN apt-get update -y \
-    && apt-get -y --no-install-recommends install ca-certificates openjdk-7-jre sudo unzip wget xvfb lsof \
+    && apt-get -y --no-install-recommends install ca-certificates openjdk-8-jre sudo unzip wget xvfb lsof \
     && rm -rf /var/lib/apt/lists/*
 
 
